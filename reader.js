@@ -1,7 +1,10 @@
 const io = require('socket.io-client');
-const socket = io.connect('http://localhost:7890')
+const socket = io.connect('http://localhost:7890');
 const readFile = require('./file-reader');
 
+return readFile(process.argv[2])
+  .then(contents => {
+    socket.emit('file-read', contents);
+  });
 
-
-socket.emit('file-read', fs.readFile[process.argv[2]]);
+// socket.emit('file-read', 'hello');
