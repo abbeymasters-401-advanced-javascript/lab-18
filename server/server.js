@@ -12,7 +12,11 @@ io.on('connection', socket => {
   });
 
   socket.on('file-saved', data => {
-    console.log(data);
-    socket.broadcast.emit('saved-file', data);
+    console.log('file updated with capitalization!')
+    socket.broadcast.emit('file-saved', data);
+  });
+
+  socket.on('file-error', data => {
+    console.log('cannot read file');
   });
 });
